@@ -2,7 +2,13 @@
   <h1>Lists</h1>
   <div>
   <% @lists.each do |list| %>
-    <div> <%= link_to list.name, list_path(list)  %> </div>
+    <div> <%= link_to list.name, list_path(list)  %> 
+      <% if list.photo.attached? %>
+        <%= cl_image_tag list.photo.key %>
+      <% else %>
+        <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
+      <% end %>
+    </div>
   <% end %>
   </div> 
 
